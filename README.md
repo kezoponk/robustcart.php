@@ -2,7 +2,7 @@
 
 ##### Create a complete shoppingcart system with few lines of code, can be used on both small and big scale sites
 
-The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code>
+!The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code> and included in top of in html file
 
 <br>
 
