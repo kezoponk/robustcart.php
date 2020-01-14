@@ -38,17 +38,15 @@ $values = array(
 ```
 
 <br>
-
-***$_SESSION['username']*** is the username variable, shoppingcart is saved in ***"users"*** folder as their ***encrypted username***.cart
-
+*ex1*
 ```php
 $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ```
+***$_SESSION['username']*** is the username variable, shoppingcart is saved in ***"users"*** folder as their ***encrypted username***.cart
 
 <br>
-
-***$_SESSION['user']*** is the username variable, shoppingcart is saved in ***"shoppingcarts"*** folder as their ***username***.cart
-
+*ex2*
 ```php
 $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 ```
+***$_SESSION['user']*** is the username variable, shoppingcart is saved in ***"shoppingcarts"*** folder as their ***username***.cart
