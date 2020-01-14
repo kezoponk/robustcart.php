@@ -32,13 +32,13 @@ $values = array(
 );
 ```
 
-##### $_SESSION['username'] is the username variable, shoppingcart is saved in "users" folder as their encrypted username
+***$_SESSION['username']*** is the username variable, shoppingcart is saved in ***"users"*** folder as their ***encrypted username***.cart
 
 ```php
 $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ```
 
-##### $_SESSION['user'] is the username variable, shoppingcart is saved in "shoppingcarts" folder as username.cart
+***$_SESSION['user']*** is the username variable, shoppingcart is saved in ***"shoppingcarts"*** folder as ***username***.cart
 
 ```php
 $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
