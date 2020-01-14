@@ -68,4 +68,4 @@ foreach($_SESSION["shopping_cart"] as $keys => $values)
     echo $values['desc'];
   }
 ```
-Outputs "Nuke"
+- Outputs "Nuke"
