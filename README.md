@@ -26,7 +26,7 @@ The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Ca
 ```html
 <form method="POST">
   <p value="1034" name="articlenumber"> 1034 </p>
-  <h1 value="Sword" name="label"> Nuke </h1>
+  <h1 value="Nuke" name="label"> Nuke </h1>
   <img value="img/uranB12_nuke.jpg" src="img/uranB12_nuke.jpg" name="image">
   <p value="Can be used as a toy or deadly weapon" type="text" name="description"> Can be used as a toy or deadly weapon </p>
   <button type="submit" name="add_to_cart"> Add To Cart </button>
@@ -59,6 +59,7 @@ $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 ***$_SESSION['user']*** is the username variable, shoppingcart is saved in ***"shoppingcarts"*** folder as their ***username***.cart
 
 <br>
+
 ## Retrieving Shopping Cart For Example
 ```php
 foreach($_SESSION["shopping_cart"] as $keys => $values)
@@ -67,3 +68,4 @@ foreach($_SESSION["shopping_cart"] as $keys => $values)
     echo $values['desc'];
   }
 ```
+Outputs "Nuke"
