@@ -7,16 +7,16 @@ The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Ca
 <br>
 
 #### Arguments
->Arg 1 = 
+>Arg 1 <br>
 >Variable of the array containing desired variable name used later when retreiving shopping cart => form element name
 >
->Arg 2
+>Arg 2 <br>
 >What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false***
 >
->Arg 3
+>Arg 3 <br>
 >Folder to save the users shoppingcart
 >
->Arg 4
+>Arg 4 <br>
 >Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username
 
 <br>
