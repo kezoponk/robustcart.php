@@ -8,8 +8,7 @@ The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Ca
 
 #### Arguments
 >Arg 1 = 
->Variable of the array containing variable name and form element name 
-><code> "variable-used-when-using-value" => "value-here-is-inserted-$_POST['here']: here you enter the name attribute of the >element in the form" </code>
+>Variable of the array containing desired variable name used later when retreiving shopping cart => form element name
 >
 >Arg 2
 >What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false***
@@ -40,6 +39,7 @@ $values = array(
   "img" => "image",
   "desc" => "description"
 );
+// DESIRED VARIABLE NAME => NAME OF INPUT IN FORM
 ```
 
 <br>
@@ -57,3 +57,13 @@ $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 ```
 ***$_SESSION['user']*** is the username variable, shoppingcart is saved in ***"shoppingcarts"*** folder as their ***username***.cart
+
+<br>
+## Retrieving Shopping Cart For Example
+```php
+foreach($_SESSION["shopping_cart"] as $keys => $values)
+  {
+    echo $values['label']; // Echo value of the articlenumber element in example form
+    echo $values['desc'];
+  }
+```
