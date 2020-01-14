@@ -15,6 +15,7 @@ The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Ca
 >Arg 4 = Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username
 <br>
 ## Examples:
+
 ```html
 <form method="POST">
   <p value="1034" name="articlenumber"> 1034 </p>
@@ -32,12 +33,15 @@ $values = array(
   "desc" => "description"
 );
 ```
+
 <br>
+
 ***$_SESSION['username']*** is the username variable, shoppingcart is saved in ***"users"*** folder as their ***encrypted username***.cart
 
 ```php
 $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ```
+
 <br>
 ***$_SESSION['user']*** is the username variable, shoppingcart is saved in ***"shoppingcarts"*** folder as their ***username***.cart
 
