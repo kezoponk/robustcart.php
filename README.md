@@ -5,7 +5,7 @@
 The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code>
 <br>
 
-#### Explanation
+#### Arguments
 >Arg 1 = Variable name you use when retrieving the value
 >
 >Arg 2 = What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false***
@@ -14,9 +14,6 @@ The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Ca
 >
 >Arg 4 = Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username
 ## Examples:
-
-#####
-
 ```html
 <form method="POST">
   <p value="1034" name="articlenumber"> 1034 </p>
@@ -26,7 +23,6 @@ The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Ca
   <button type="submit" name="add_to_cart"> Add To Cart </button>
 </form>
 ```
-
 ```php
 $values = array(
   "articlenmb" => "articlenumber", 
@@ -34,6 +30,16 @@ $values = array(
   "img" => "image",
   "desc" => "description"
 );
+```
 
+##### $_SESSION['username'] is the username variable, shoppingcart is saved in "users" folder as their encrypted username
+
+```php
 $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
+```
+
+##### $_SESSION['user'] is the username variable, shoppingcart is saved in "shoppingcarts" folder as username.cart
+
+```php
+$_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 ```
