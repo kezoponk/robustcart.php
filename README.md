@@ -5,13 +5,13 @@
 The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code>
 <br><br>
 
-Arg 1 = Variable name you use when retrieving the value
-
-Arg 2 = What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false***
-
-Arg 3 = Folder to save the users shoppingcart
-
-Arg 4 = Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username
+>Arg 1 = Variable name you use when retrieving the value
+>
+>Arg 2 = What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false***
+>
+>Arg 3 = Folder to save the users shoppingcart
+>
+>Arg 4 = Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username
 ## Examples:
 
 #####
