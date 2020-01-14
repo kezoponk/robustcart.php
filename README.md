@@ -7,13 +7,18 @@ The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Ca
 <br>
 
 #### Arguments
->Arg 1 = Variable name you use when retrieving the value
+>Arg 1 = 
+>Variable of the array containing variable name and form element name 
+><code> "variable-used-when-using-value" => "value-here-is-inserted-$_POST['here']: here you enter the name attribute of the >element in the form" </code>
 >
->Arg 2 = What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false***
+>Arg 2
+>What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false***
 >
->Arg 3 = Folder to save the users shoppingcart
+>Arg 3
+>Folder to save the users shoppingcart
 >
->Arg 4 = Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username
+>Arg 4
+>Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username
 
 <br>
 
@@ -39,7 +44,7 @@ $values = array(
 
 <br>
 
-*ex1*
+*Example 1*
 ```php
 $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ```
@@ -47,7 +52,7 @@ $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 
 <br>
 
-*ex2*
+*Example 2*
 ```php
 $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 ```
