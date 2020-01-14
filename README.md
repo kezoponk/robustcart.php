@@ -2,7 +2,7 @@
 
 ##### Create a complete shoppingcart system with few lines of code, can be used on both small and big scale sites
 
-!The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code> <br> and included in top of in html file
+The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code> <br>
 
 <br>
 
@@ -24,6 +24,10 @@
 ## Examples:
 
 ```html
+<?php include('shoppingcart.php') ?>
+<html>
+...
+...
 <form method="POST">
   <p value="1034" name="articlenumber"> 1034 </p>
   <h1 value="Nuke" name="label"> Nuke </h1>
