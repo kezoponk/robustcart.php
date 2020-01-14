@@ -5,6 +5,7 @@
 The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code>
 <br>
 
+#### Explanation
 >Arg 1 = Variable name you use when retrieving the value
 >
 >Arg 2 = What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false***
