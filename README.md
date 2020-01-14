@@ -38,6 +38,7 @@ $values = array(
 ```
 
 <br>
+
 *ex1*
 ```php
 $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
@@ -45,6 +46,7 @@ $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ***$_SESSION['username']*** is the username variable, shoppingcart is saved in ***"users"*** folder as their ***encrypted username***.cart
 
 <br>
+
 *ex2*
 ```php
 $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
