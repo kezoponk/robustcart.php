@@ -64,8 +64,8 @@ $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 ```php
 foreach($_SESSION["shopping_cart"] as $keys => $values)
   {
-    echo $values['label']; // Echo value of the articlenumber element in example form
+    echo $values['label'].'<br>'; // Echo value of the articlenumber element in example form
     echo $values['desc'];
   }
 ```
-- Outputs "Nuke"
+- Outputs "Nuke" and "Can be used as a toy or deadly weapon"
