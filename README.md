@@ -4,8 +4,6 @@
 
 The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code> <br>
 
-<br>
-
 #### Arguments
 >Arg 1 <br>
 >Variable of the array containing desired variable name used later when retreiving shopping cart => form element name
@@ -26,7 +24,6 @@ The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Ca
 ```html
 <?php include('shoppingcart.php') ?>
 <html>
-...
 ...
 <form method="POST">
   <p value="1034" name="articlenumber"> 1034 </p>
