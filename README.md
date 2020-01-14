@@ -3,6 +3,7 @@
 ##### Create a complete shoppingcart system with few lines of code, can be used on both small and big scale sites
 
 The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code>
+
 <br>
 
 #### Arguments
@@ -13,7 +14,9 @@ The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Ca
 >Arg 3 = Folder to save the users shoppingcart
 >
 >Arg 4 = Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username
+
 <br>
+
 ## Examples:
 
 ```html
@@ -43,6 +46,7 @@ $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ```
 
 <br>
+
 ***$_SESSION['user']*** is the username variable, shoppingcart is saved in ***"shoppingcarts"*** folder as their ***username***.cart
 
 ```php
