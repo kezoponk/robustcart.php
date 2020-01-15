@@ -1,7 +1,7 @@
 /* Created by Albin Eriksson, https://github.com/kezoponk
 */ MIT License, https://opensource.org/licenses/MIT
-<?php
 
+<?php
 session_start();
 
 class Cart {
