@@ -45,7 +45,7 @@ $values = array(
 
 <br>
 
-*Example 1*
+#### *Example 1*
 ```php
 $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ```
@@ -53,11 +53,19 @@ $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 
 <br>
 
-*Example 2*
+#### *Example 2*
 ```php
 $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 ```
 ***$_SESSION['user']*** is the username variable, shoppingcart is saved in ***"shoppingcarts"*** folder as their ***username***.cart
+
+<br>
+
+#### *Example 3*
+```php
+$_SESSION['cart'] = new Cart($values, "false", "false", FALSE);
+```
+Shoppingcart is ***not*** saved in file, the customers cart is stored only in session
 
 <br>
 
