@@ -1,3 +1,5 @@
+/* Created by Albin Eriksson, https://github.com/kezoponk
+*/ MIT License, https://opensource.org/licenses/MIT
 <?php
 
 session_start();
@@ -14,7 +16,8 @@ class Cart {
   function readusercart() {
     $x = 0;
     $y = 1;
-    $filename = "users/" . $this->username . ".cart";
+    // Create filename                     folder/username.cart
+    $filename = $this->saveplace ."/". $this->username . ".cart";
     $lines = file($filename);
 
     while($x <= 100) { // Maximum entities saved : 100
