@@ -61,7 +61,7 @@ $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 
 <br>
 
-## Retrieving Shopping Cart For Example
+## Retrieving shopping cart in the example form
 ```php
 foreach($_SESSION["shopping_cart"] as $keys => $values)
   {
