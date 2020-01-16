@@ -40,7 +40,7 @@ $values = array(
   "img" => "image",
   "desc" => "description"
 );
-// DESIRED VARIABLE NAME => NAME OF INPUT IN FORM
+// DESIRED-VARIABLE-NAME => NAME-OF-INPUT-IN-FORM
 ```
 
 <br>
