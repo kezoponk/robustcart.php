@@ -75,6 +75,7 @@ foreach($_SESSION["shopping_cart"] as $keys => $values)
   {
     echo $values['label'].'<br>'; // Echo value of the articlenumber element in example form
     echo $values['desc'];
+ // echo $values['DESIRED-VARIABLE-NAME']
   }
 ```
 - Outputs "Nuke" and "Can be used as a toy or deadly weapon"
