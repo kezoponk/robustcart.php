@@ -34,7 +34,7 @@ class Cart {
       {
         $count = count($_SESSION["shopping_cart"]);
       }
-
+      
       $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
 
       // Cart id is inserted into the 1st index
@@ -57,7 +57,7 @@ class Cart {
   function savefunc() {
     // Create filename                        folder/username.cart
       $filename =  $this->saveplace ."/". $this->username . ".cart";
-
+    
       // Fatal error if unable to open
       $myfile = fopen($filename, "w") or die("Unable to open file!");
 
@@ -84,9 +84,6 @@ class Cart {
         fclose($myfile);
       }
     }
-
-
-
 
   public function __construct($marray, $savename, $saveplace, $encrypt) {
 
