@@ -49,7 +49,7 @@ $values = array(
 ```php
 $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ```
-***$_SESSION['username']*** is the username variable, shoppingcart is saved in ***"users"*** folder as their ***encrypted username***.cart
+***$_SESSION['username']*** is the username variable, shoppingcart is stored in session ***and*** saved in "users" folder as their ***encrypted username***.cart
 
 <br>
 
@@ -57,7 +57,7 @@ $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ```php
 $_SESSION['cart'] = new Cart($values, "false", "false", FALSE);
 ```
-Shoppingcart is ***not*** saved in file, the customers cart is stored only in session
+Shoppingcart is ***not*** saved in file, the customers cart is ***stored only in session*** which is the only option if you don't have accounts. This is not the "**worse option**", but the customers shopping cart is cleared when session cookie run out
 
 <br>
 
