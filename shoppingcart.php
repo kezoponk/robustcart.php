@@ -1,7 +1,7 @@
+<?php
 // Created by Albin Eriksson, https://github.com/kezoponk
 // MIT License, https://opensource.org/licenses/MIT
 
-<?php
 session_start();
 
 class Cart {
@@ -13,77 +13,32 @@ class Cart {
   private $username = NULL;
 
   // Read users cart
-  function readusercart() {
-    $x = 0;
-    $y = 1;
-    // Create filename                     folder/username.cart
-    $filename = $this->saveplace ."/". $this->username . ".cart";
+  function readuserCart() {
+    $filename = $this->saveplace."/" . $this->username . ".cart";
+
     $lines = file($filename);
+    $completefile = "";
 
-    while($x <= 100) { // Maximum entities saved : 100
-      $line = explode(";",$lines[$x]);
-
-      // Break when file end is reached
-      if (empty($lines[$x])) {
-        break;
-      }
-
-      // If shopping cart is not set ( empty ) then input att index 0 of shopping cart array
-      $count = 0;
-      if(isset($_SESSION["shopping_cart"]))
-      {
-        $count = count($_SESSION["shopping_cart"]);
-      }
-      
-      $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
-
-      // Cart id is inserted into the 1st index
-      $item_array = array('cart_id' => $line[0]);
-
-      foreach($this->itemNames as $variablename => $formname) {
-        // Then add the rest of the product / entity
-        $item_array += [$variablename => $line[$y]];
-        $y++;
-      }
-
-      if(!empty($item_array)) {
-        // Finally enter the $item_array we just created into the main shopping cart array
-        $_SESSION["shopping_cart"][$count] = $item_array;
-      }
-      $x++;
+    // Attach line by line to json decode variable
+    foreach ($lines as $line) {
+      $completefile = $completefile.$line;
     }
+    // Turn json shoppingcart into php array
+    $_SESSION['shopping_cart'] = json_decode($completefile, true);
   }
 
-  function savefunc() {
+  function saveuserCart() {
+    $jsontxt = json_encode($_SESSION['shopping_cart']);
     // Create filename                        folder/username.cart
-      $filename =  $this->saveplace ."/". $this->username . ".cart";
-    
-      // Fatal error if unable to open
-      $myfile = fopen($filename, "w") or die("Unable to open file!");
+    $filename =  $this->saveplace ."/". $this->username . ".cart";
 
-      if(!empty($_SESSION["shopping_cart"])) {
-        $txt = "";
+    // Fatal error if unable to open
+    $myfile = fopen($filename, "w") or die("Unable to open file!");
 
-        foreach($_SESSION["shopping_cart"] as $keys => $values)
-        {
-          $txt = $txt.$values['cart_id'].";";
-
-          foreach($this->itemNames as $variablename => $name) {
-            // Semicolon seperated values
-            $txt = $txt . $values[$variablename].";";
-          }
-
-          // New line to distinguish different articles / entities
-          $txt = $txt."\r\n";
-
-        }
-        // Validate data
-        if(!($txt==";;;;;") && (strpos($txt, ";") !== false)) {
-          fwrite($myfile, $txt);
-        }
-        fclose($myfile);
-      }
-    }
+    // Save shoppingcart as in json format
+    fwrite($myfile, $jsontxt);
+    fclose($myfile);
+  }
 
   public function __construct($marray, $savename, $saveplace, $encrypt) {
 
@@ -98,6 +53,15 @@ class Cart {
       // Filename of cart file is the username
       $this->username = $_SESSION[$this->savename];
     }
+    
+    // Executed only on first refresh/reload after user login
+    if(($this->savename != "false") && (isset($_SESSION[$this->savename])) && (!$_SESSION['keychain'])) {
+      // Preventing this "first time login" code to be run every reload
+      $_SESSION['keychain'] = true;
+      // Create entered folder to save shoppingcart(s) in, if not already created
+      mkdir($this->saveplace);
+      $this->readuserCart();
+    }
   }
 }
 
@@ -105,15 +69,11 @@ class Cart {
 if(isset($_POST["add_to_cart"]))
 {
   $count = 0;
-
   // If shopping cart is not set ( empty ) then input att index 0 of shopping cart array
   if(isset($_SESSION["shopping_cart"]))
   {
     $count = count($_SESSION["shopping_cart"]);
   }
-
-  $item_array_id = array_column($_SESSION["shopping_cart"], "cart_id");
-
   // Cart id is inserted into the 1st index
   $item_array = array('cart_id' => rand(1000, 9999));
 
@@ -121,17 +81,16 @@ if(isset($_POST["add_to_cart"]))
   foreach($_SESSION['cart']->itemNames as $variablename => $formname) {
     $item_array += [$variablename => $_POST[$formname]];
   }
-
   // Finally enter the $item_array we just created into the main shopping cart array
   $_SESSION["shopping_cart"][$count] = $item_array;
 
   // Save cart if logged in & savename argument is not false
   if(($_SESSION['cart']->savename != "false") && (isset($_SESSION[$_SESSION['cart']->savename]))) {
-    $_SESSION['cart']->savefunc();
+    $_SESSION['cart']->saveuserCart();
   }
 }
 
-function removefromcart($id) {
+function removefromCart($id) {
   // Retrieve the complete shopping cart
   foreach($_SESSION["shopping_cart"] as $keys => $values)
   {
@@ -141,7 +100,7 @@ function removefromcart($id) {
       // Remove from main shopping cart array
       unset($_SESSION["shopping_cart"][$keys]);
       // Save new shopping cart
-      savefunc();
+      saveuserCart();
       header("location:javascript://history.go(-1)");
 
     }
@@ -151,11 +110,11 @@ function removefromcart($id) {
 // Remove from cart
 if(isset($_GET['rfc']))
 {
-  removefromcart($_GET['rfc']);
+  removefromCart($_GET['rfc']);
 }
 else if(isset($_POST['rfc']))
 {
-  removefromcart($_POST['rfc']);
+  removefromCart($_POST['rfc']);
 }
 
 ?>
