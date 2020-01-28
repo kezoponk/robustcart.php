@@ -69,13 +69,18 @@ $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 
 <br>
 
-## Retrieving shopping cart in the example form
+## Retrieving shopping cart in the example form, and removing items
 ```php
 foreach($_SESSION["shopping_cart"] as $keys => $values)
   {
     echo $values['label'].'<br>'; // Echo value of the articlenumber element in example form
     echo $values['desc'];
  // echo $values['DESIRED-VARIABLE-NAME']
+ 
+ // You can also remove with link or form
+    echo '<a href="shoppingcart.php?rfc='.$values['cart_id'].'"> Remove </a>';
+ // echo '<form type="POST"> <button type="submit" name="rfc" value="'.$values['cart_id'].'"> Remove </button>';
+    
   }
 ```
-- Outputs "Nuke" and "Can be used as a toy or deadly weapon"
+- Outputs "Nuke" and "Can be used as a toy or deadly weapon", with a remove link
