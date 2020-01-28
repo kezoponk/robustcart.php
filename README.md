@@ -79,7 +79,7 @@ foreach($_SESSION["shopping_cart"] as $keys => $values)
  
  // You can also remove with link or form
     echo '<a href="shoppingcart.php?rfc='.$values['cart_id'].'"> Remove </a>';
- // echo '<form type="POST"> <button type="submit" name="rfc" value="'.$values['cart_id'].'"> Remove </button>';
+    echo '<form type="POST"> <button type="submit" name="rfc" value="'.$values['cart_id'].'"> Remove </button>';
     
   }
 ```
