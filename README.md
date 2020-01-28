@@ -83,4 +83,4 @@ foreach($_SESSION["shopping_cart"] as $keys => $values)
     
   }
 ```
-- Outputs "Nuke" and "Can be used as a toy or deadly weapon", with a remove link
+- Outputs "Nuke" and "Can be used as a toy or deadly weapon", with a remove link, and button
