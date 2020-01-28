@@ -49,8 +49,7 @@ $values = array(
 ```php
 $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ```
-***$_SESSION['username']*** is the username variable, shoppingcart is ***stored in session and saved in "users" folder*** as their ***encrypted username***.cart
-!Keep in mind that encryption may affect website performance
+***$_SESSION['username']*** is the username variable, shoppingcart is ***stored in session and saved in "users" folder*** as their ***encrypted username***.cart. Keep in mind that encryption ***may*** affect website performance
 
 <br>
 
