@@ -69,7 +69,8 @@ $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 
 <br>
 
-## Retrieving shopping cart in the example form, and removing items
+## Retrieving shopping cart
+From the example form, and removing items
 ```php
 foreach($_SESSION["shopping_cart"] as $keys => $values)
   {
