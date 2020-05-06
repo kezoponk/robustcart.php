@@ -22,7 +22,7 @@ The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Ca
 ## Examples:
 
 ```html
-<?php include('shoppingcart.php') ?>
+<?php include('robustcart.php') ?>
 <html>
 ...
 <form method="POST">
