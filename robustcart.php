@@ -1,6 +1,6 @@
 <?php
-// Created by Albin Eriksson, https://github.com/kezoponk
-// MIT License, https://opensource.org/licenses/MIT
+// @author Albin Eriksson, https://github.com/kezoponk
+// @license MIT, https://opensource.org/licenses/MIT
 
 session_start();
 
@@ -15,7 +15,6 @@ class Cart {
   // Read users cart
   function readuserCart() {
     $filename = $this->saveplace."/" . $this->username . ".cart";
-
     $lines = file($filename);
     $completefile = "";
 
@@ -29,7 +28,8 @@ class Cart {
 
   function saveuserCart() {
     $jsontxt = json_encode($_SESSION['shopping_cart']);
-    // Create filename                        folder/username.cart
+    // Create filename
+    // folder/(username.cart or encrypted-username.cart)
     $filename =  $this->saveplace ."/". $this->username . ".cart";
 
     // Fatal error if unable to open
@@ -53,7 +53,6 @@ class Cart {
       // Filename of cart file is the username
       $this->username = $_SESSION[$this->savename];
     }
-    
     // Executed only on first refresh/reload after user login
     if(($this->savename != "false") && (isset($_SESSION[$this->savename])) && (!$_SESSION['keychain'])) {
       // Preventing this "first time login" code to be run every reload
@@ -65,6 +64,12 @@ class Cart {
   }
 }
 
+$values = array(
+  "label" => "label",
+  "articlenumber" => "hidden-articlenumber",
+);
+$_SESSION['cart'] = new Cart($values, "username", "src/carts", TRUE);
+
 // Add new article to cart
 if(isset($_POST["add_to_cart"]))
 {
@@ -74,7 +79,7 @@ if(isset($_POST["add_to_cart"]))
   {
     $count = count($_SESSION["shopping_cart"]);
   }
-  // Cart id is inserted into the 1st index
+  // Cart id is inserted into the 1st(0) index
   $item_array = array('cart_id' => rand(1000, 9999));
 
   // Then add the rest of the product / entity
@@ -90,31 +95,24 @@ if(isset($_POST["add_to_cart"]))
   }
 }
 
-function removefromCart($id) {
+// Remove from cart
+if(isset($_POST['rfc']))
+{
+  $id = $_POST['rfc'];
   // Retrieve the complete shopping cart
   foreach($_SESSION["shopping_cart"] as $keys => $values)
   {
     // Search for entered id
-    if($values["cart_id"] == $id)
+    if($values['cart_id'] == $id)
     {
       // Remove from main shopping cart array
       unset($_SESSION["shopping_cart"][$keys]);
       // Save new shopping cart
-      saveuserCart();
-      header("location:javascript://history.go(-1)");
-
+      if(($_SESSION['cart']->savename != "false") && (isset($_SESSION[$_SESSION['cart']->savename]))) {
+        $_SESSION['cart']->saveuserCart();
+      }
     }
   }
-}
-
-// Remove from cart
-if(isset($_GET['rfc']))
-{
-  removefromCart($_GET['rfc']);
-}
-else if(isset($_POST['rfc']))
-{
-  removefromCart($_POST['rfc']);
 }
 
 ?>
