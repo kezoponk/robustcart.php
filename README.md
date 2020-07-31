@@ -1,7 +1,6 @@
 # Robustcart.php
 
 Create a complete shoppingcart system with a few lines of code, can be used on both small and big scale sites
-
 The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code> <br>
 
 #### Arguments
@@ -45,7 +44,7 @@ $values = array(
 
 <br>
 
-#### *Example 1*
+**Example 1**
 ```php
 $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 ```
@@ -53,7 +52,7 @@ $_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
 
 <br>
 
-#### *Example 2*
+**Example 2**
 ```php
 $_SESSION['cart'] = new Cart($values, "false", "false", FALSE);
 ```
@@ -61,7 +60,7 @@ Shoppingcart is ***not*** saved in file, the customers cart is ***stored only in
 
 <br>
 
-#### *Example 3*
+**Example 3**
 ```php
 $_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
 ```
