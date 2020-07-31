@@ -64,7 +64,7 @@ class Cart {
   }
 }
 
-// Configure
+// Configure here
 $values = array(
   "label" => "label",
   "articlenumber" => "hidden-articlenumber",
