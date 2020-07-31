@@ -1,7 +1,7 @@
 # Robustcart.php
 
 Create a complete shoppingcart system with a few lines of code, can be used on both small and big scale sites
-The cart needs to be initalized this exact way: <code>$_SESSION['cart'] = new Cart......</code> <br>
+The cart needs to be configured in the robustcart.php file at the configure here part
 
 #### Arguments
 >Arg 1 <br>
