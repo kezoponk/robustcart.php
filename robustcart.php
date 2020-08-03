@@ -6,7 +6,6 @@
 session_start();
 
 class Cart {
-  
   public $itemNames = array();
   public $savename = false;
   public $saveplace = NULL;
