@@ -6,7 +6,7 @@
 session_start();
 
 class Cart {
-
+  
   public $itemNames = array();
   public $savename = false;
   public $saveplace = NULL;
@@ -42,7 +42,6 @@ class Cart {
   }
 
   public function __construct($marray, $savename, $saveplace, $encrypt) {
-
     $this->itemNames = $marray;
     $this->savename = $savename;
     $this->saveplace = $saveplace;
