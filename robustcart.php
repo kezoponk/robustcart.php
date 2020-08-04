@@ -74,6 +74,7 @@ $values = array(
 );
 $_SESSION['cart'] = new Cart($values, "username", "src/carts", TRUE);
 
+
 // Add new article to cart
 if(isset($_POST["add_to_cart"]))
 {
