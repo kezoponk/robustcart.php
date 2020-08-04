@@ -10,9 +10,11 @@ The cart needs to be **configured in the robustcart.php file at the configure he
 |  2  | What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false*** |
 |  3  | Folder to save the users shoppingcart |
 |  4  | Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username |
+<p align="center">
 <code>
   $_SESSION['cart'] = new Cart($1, "2", "3", 4);
 </code>
+  </p>
 <br>
 
 ## Examples:
