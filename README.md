@@ -1,21 +1,18 @@
-# Robustcart.php
+# Robustcart.php ![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
 
 Create a complete shoppingcart system with a few lines of code, can be used on both small and big scale sites<br>
 The cart needs to be **configured in the robustcart.php file at the configure here part**
 
 #### Arguments
->Arg 1 <br>
->Variable of the array containing desired variable name used later when retreiving shopping cart => form element name
->
->Arg 2 <br>
->What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false***
->
->Arg 3 <br>
->Folder to save the users shoppingcart
->
->Arg 4 <br>
->Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username
-
+| Arg | Description |
+| --- | --- |
+|  1  | Variable of the array containing desired variable name used later when retreiving shopping cart => form element name |
+|  2  | What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false*** |
+|  3  | Folder to save the users shoppingcart |
+|  4  | Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username |
+<code>
+  $_SESSION['cart'] = new Cart($1, "2", "3", 4);
+</code>
 <br>
 
 ## Examples:
