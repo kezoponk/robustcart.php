@@ -76,7 +76,7 @@ foreach($_SESSION["shopping_cart"] as $keys => $values)
     echo $values['desc'];
  // echo $values['DESIRED-VARIABLE-NAME']
  
- // Items can be removed with both get or post
+ // Items can be removed only with post
     echo '<form type="POST"> <button type="submit" name="rfc" value="'.$values['cart_id'].'"> Remove </button> </form>;
     
   }
