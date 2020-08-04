@@ -64,7 +64,10 @@ class Cart {
   }
 }
 
-// Configure here
+/**
+ * Configure here
+ * @param array $values - Variable used for fetching value => name of element
+ */
 $values = array(
   "label" => "label",
   "articlenumber" => "hidden-articlenumber",
@@ -84,8 +87,8 @@ if(isset($_POST["add_to_cart"]))
   $item_array = array('cart_id' => rand(1000, 9999));
 
   // Then add the rest of the product / entity
-  foreach($_SESSION['cart']->itemNames as $variablename => $formname) {
-    $item_array += [$variablename => $_POST[$formname]];
+  foreach($_SESSION['cart']->itemNames as $variableName => $formName) {
+    $item_array += [$variableName => $_POST[$formName]];
   }
   // Finally enter the $item_array we just created into the main shopping cart array
   $_SESSION["shopping_cart"][$count] = $item_array;
