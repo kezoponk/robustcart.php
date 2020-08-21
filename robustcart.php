@@ -1,123 +1,127 @@
 <?php
-/** 
- * @author Albin Eriksson, https://github.com/kezoponk
- * @license MIT, https://opensource.org/licenses/MIT
- */
+/**
+* @author Albin Eriksson, https://github.com/kezoponk
+* @license MIT, https://opensource.org/licenses/MIT
+*/
 session_start();
 
 class Cart {
-  
-  public $itemNames = array();
-  public $savename = false;
-  public $saveplace = NULL;
-  public $encrypt = false;
-  private $username = NULL;
+  private $itemNames = array();
+  private $saveName = NULL;
+  private $isLoggedIn = FALSE;
+  private $encrypt = FALSE;
 
-  // Read users cart
-  function readuserCart() {
-    $filename = $this->saveplace."/" . $this->username . ".cart";
-    $lines = file($filename);
-    $completefile = "";
-
-    // Attach line by line to json decode variable
-    foreach ($lines as $line) {
-      $completefile = $completefile.$line;
+  function resetIndexes() {
+    $updatedIndex = 0;
+    foreach($_SESSION['shopping_cart'] as $keys => $values)
+    {
+      $_SESSION['shopping_cart'][$keys]['cart_index'] = $updatedIndex;
+      $updatedIndex++;
     }
-    // Turn json shoppingcart into php array
-    $_SESSION['shopping_cart'] = json_decode($completefile, true);
   }
 
-  function saveuserCart() {
-    $jsontxt = json_encode($_SESSION['shopping_cart']);
-    // Create filename
-    // folder/(username.cart or encrypted-username.cart)
-    $filename =  $this->saveplace ."/". $this->username . ".cart";
+  function readUserCart() {
+    $fileName = $this->savePlace.'/' . $this->saveName . '.json';
+    if(file_exists($fileName)) {
+      // Attach line by line to json decode variable
+      $lines = file($fileName);
+      $completeFile = '';
+      foreach ($lines as $line) $completeFile = $completeFile.$line;
+
+      // Turn json shoppingcart into php array
+      $completeFileDecoded = json_decode($completeFile, TRUE);
+      foreach($completeFileDecoded as $key => $value) {
+        array_push($_SESSION['shopping_cart'], $value);
+      }
+      $this->resetIndexes();
+      $this->writeUserCart();
+    } else if(count($_SESSION['shopping_cart']) > 0) {
+      $this->writeUserCart();
+    }
+  }
+
+  function writeUserCart() {
+    // save_dir/(username.json or encrypted-username.json)
+    $fileName =  $this->savePlace .'/'. $this->saveName . '.json';
 
     // Fatal error if unable to open
-    $myfile = fopen($filename, "w") or die("Unable to open file!");
+    $writeTo = fopen($fileName, 'w') or die('Unable to write file!');
 
     // Save shoppingcart as in json format
-    fwrite($myfile, $jsontxt);
-    fclose($myfile);
+    $jsontxt = json_encode($_SESSION['shopping_cart']);
+    fwrite($writeTo, $jsontxt);
+    fclose($writeTo);
   }
 
-  public function __construct($marray, $savename, $saveplace, $encrypt) {
-    $this->itemNames = $marray;
-    $this->savename = $savename;
-    $this->saveplace = $saveplace;
+  function addToCart() {
+    // Cart index is inserted into the 1st(0) index
+    $itemArray = array('cart_index' => count($_SESSION['shopping_cart']));
 
-    if($encrypt) {
-      // Turn the current users username that is used as filename for the cart file into md5 hash
-      $this->username = md5($_SESSION[$this->savename]);
-    } else {
-      // Filename of cart file is the username
-      $this->username = $_SESSION[$this->savename];
+    // Then add the rest of the product / entity
+    foreach($this->itemNames as $formname => $variablename) {
+      $itemArray += [$variablename => $_POST[$formname]];
     }
-    // Executed only on first refresh/reload after user login
-    if(($this->savename != "false") && (isset($_SESSION[$this->savename])) && (!$_SESSION['keychain'])) {
-      // Preventing this "first time login" code to be run every reload
-      $_SESSION['keychain'] = true;
-      // Create entered folder to save shoppingcart(s) in, if not already created
-      mkdir($this->saveplace);
-      $this->readuserCart();
+    // Finally enter the $item_array we just created into the main shopping cart array
+    array_push($_SESSION['shopping_cart'], $itemArray);
+
+    // Save cart if logged in & saveName argument is set
+    if($this->isLoggedIn) {
+      $this->writeUserCart();
     }
   }
-}
 
-/**
- * Configure here
- * @param array $values - Variable used for fetching value => name of element
- */
-$values = array(
-  "label" => "label",
-  "articlenumber" => "hidden-articlenumber",
-);
-$_SESSION['cart'] = new Cart($values, "username", "src/carts", TRUE);
-
-
-// Add new article to cart
-if(isset($_POST["add_to_cart"]))
-{
-  $count = 0;
-  // If shopping cart is not set ( empty ) then input att index 0 of shopping cart array
-  if(isset($_SESSION["shopping_cart"]))
-  {
-    $count = count($_SESSION["shopping_cart"]);
-  }
-  // Cart id is inserted into the 1st(0) index
-  $item_array = array('cart_id' => rand(1000, 9999));
-
-  // Then add the rest of the product / entity
-  foreach($_SESSION['cart']->itemNames as $variableName => $formName) {
-    $item_array += [$variableName => $_POST[$formName]];
-  }
-  // Finally enter the $item_array we just created into the main shopping cart array
-  $_SESSION["shopping_cart"][$count] = $item_array;
-
-  // Save cart if logged in & savename argument is not false
-  if(($_SESSION['cart']->savename != "false") && (isset($_SESSION[$_SESSION['cart']->savename]))) {
-    $_SESSION['cart']->saveuserCart();
-  }
-}
-
-// Remove from cart
-if(isset($_POST['rfc']))
-{
-  $id = $_POST['rfc'];
-  // Retrieve the complete shopping cart
-  foreach($_SESSION["shopping_cart"] as $keys => $values)
-  {
-    // Search for entered id
-    if($values['cart_id'] == $id)
+  function removeFromCart() {
+    $index = $_POST['remove-from-cart'];
+    // Retrieve the complete shopping cart
+    foreach($_SESSION['shopping_cart'] as $keys => $values)
     {
-      // Remove from main shopping cart array
-      unset($_SESSION["shopping_cart"][$keys]);
-      // Save new shopping cart
-      if(($_SESSION['cart']->savename != "false") && (isset($_SESSION[$_SESSION['cart']->savename]))) {
-        $_SESSION['cart']->saveuserCart();
+      // Search for entered id
+      if($values['cart_index'] == $index)
+      {
+        // Remove from main shopping cart array
+        unset($_SESSION['shopping_cart'][$keys]);
       }
     }
+    $this->resetIndexes();
+    // Save new shopping cart
+    if($this->isLoggedIn) {
+      $this->writeUserCart();
+    }
+  }
+
+  public function __construct($nameToVariable, $options) {
+    if(isset($options['username_key'])) $this->username = $options['username_key'];
+    if(isset($options['save_dir'])) $this->savePlace = $options['save_dir'];
+    if(isset($options['encrypt'])) $this->encrypt = $options['encrypt'];
+    $this->itemNames = $nameToVariable;
+    $this->isLoggedIn = (isset($_SESSION[$this->username]));
+
+    if($this->encrypt && $this->isLoggedIn) {
+      // Turn the current users username that is used as filename for the cart file into md5 hash
+      $this->saveName = md5($_SESSION[$this->username]);
+    } else if($this->isLoggedIn) {
+      // Filename of cart file is the username
+      $this->saveName = $_SESSION[$this->username];
+    }
+    // Initialize cart
+    if(!isset($_SESSION['shopping_cart'])) {
+      $_SESSION['shopping_cart'] = array();
+    }
+    // Executed only on first refresh/reload after user login
+    if($this->isLoggedIn && !isset($_SESSION['robustcart_keychain'])) {
+      // Preventing this "first time login" code to be run every reload
+      $_SESSION['robustcart_keychain'] = true;
+      $this->readUserCart();
+    }
   }
 }
 
+if(isset($_POST['add-to-cart']))
+{
+  $_SESSION['cart']->addToCart();
+}
+if(isset($_POST['remove-from-cart']))
+{
+  $_SESSION['cart']->removeFromCart();
+}
 ?>
