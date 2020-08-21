@@ -1,24 +1,24 @@
 # Robustcart.php ![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
 
 Create a complete shoppingcart system with a few lines of code, can be used on both small and big scale sites<br>
-The cart needs to be **configured in the robustcart.php file at the configure here part**
 
-#### Arguments
-| Arg | Description |
+#### 
+| Argument | Description |
 | --- | --- |
-|  1  | Variable of the array containing desired variable name used later when retreiving shopping cart => form element name |
-|  2  | What your $_SESSION['thisvalue'] is for your username system, if you have one. ***If not: enter false*** |
-|  3  | Folder to save the users shoppingcart |
-|  4  | Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username |
+|  1  | Variable of the dictionary containing 'form element name' => 'desired variable name used later when retreiving shopping cart' |
+|  [  |  |
+| `username_key`  | What your $_SESSION['thisvalue'] is for your username system, if you have one. |
+| `save_dir`  | Folder to save the users shoppingcart |
+| `encrypt`  | Encrypt shoppingcart file, if false: users shoppingcart file will be named as the users username |
+|  ]  |  |
 <p align="center">
-<code>
-  $_SESSION['cart'] = new Cart($1, "2", "3", 4);
-</code>
-  </p>
+  <code>
+    $_SESSION['cart'] = new Cart($nameToVariable, [Options for saving cart]);
+  </code>
+ </p>
 <br>
 
-## Examples:
-
+### Examples:
 ```html
 <?php include('robustcart.php') ?>
 <html>
@@ -33,51 +33,55 @@ The cart needs to be **configured in the robustcart.php file at the configure he
 ```
 ```php
 $values = array(
-  "articlenmb" => "articlenumber", 
+  "articlenumber" => "articlenmb", 
   "label" => "label",
-  "img" => "image",
-  "desc" => "description"
+  "image" => "img",
+  "description" => "desc"
 );
-// DESIRED-VARIABLE-NAME => NAME-OF-INPUT-IN-FORM
+// NAME-OF-INPUT-IN-FORM => DESIRED-VARIABLE-NAME
 ```
+___
 
 <br>
 
 **Example 1**
 ```php
-$_SESSION['cart'] = new Cart($values, "username", "users", TRUE);
+$_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" => "users", "encrypt" => TRUE]);
 ```
-***$_SESSION['username']*** is the username variable, shoppingcart is ***stored in session and saved in "users" folder*** as their ***encrypted username***.cart. Keep in mind that encryption ***may*** affect website performance
+- ***$_SESSION['username']*** is the username variable, shoppingcart is ***stored in session and saved in "users" folder*** as their ***encrypted username***.cart. Keep in mind that encryption ***may*** affect website performance on very big scale sites
+___
 
 <br>
 
 **Example 2**
 ```php
-$_SESSION['cart'] = new Cart($values, "false", "false", FALSE);
+$_SESSION['cart'] = new Cart($values, []);
 ```
-Shoppingcart is ***not*** saved in file, the customers cart is ***stored only in session*** which is the only option if you don't have accounts. ***This is not the "worse option"***, but the customers shopping cart is cleared when session cookie run out
+- Shoppingcart is ***not*** saved in file, the customers cart is ***stored only in session*** which is the only option if you don't have accounts. ***This is not the "worse option"***, but the customers shopping cart is cleared when session cookie run out
+___
 
 <br>
 
 **Example 3**
 ```php
-$_SESSION['cart'] = new Cart($values, "user", "shoppingcarts", FALSE);
+$_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "shoppingcarts", "encrypt" => FALSE);
 ```
 ***$_SESSION['user']*** is the username variable, shoppingcart is saved in ***"shoppingcarts"*** folder as their ***username***.cart
+___
 
 <br>
 
-## Retrieving shopping cart
+___
+### Retrieving shopping cart
 From the example form, and removing items
 ```php
 foreach($_SESSION["shopping_cart"] as $keys => $values)
   {
-    echo $values['label'].'<br>'; // Echo value of the articlenumber element in example form
+    // Echo value of the description element in example form
     echo $values['desc'];
- // echo $values['DESIRED-VARIABLE-NAME']
  
- // Items can be removed only with post
-    echo '<form type="POST"> <button type="submit" name="rfc" value="'.$values['cart_id'].'"> Remove </button> </form>;
+    // Items can be removed only with post
+    echo '<form method="POST"> <button type="submit" name="rfc" value="'.$values['cart_index'].'"> Remove </button> </form>;
     
   }
 ```
