@@ -40,7 +40,6 @@ $values = array(
 );
 // NAME-OF-INPUT-IN-FORM => DESIRED-VARIABLE-NAME
 ```
-___
 
 <br>
 
@@ -71,7 +70,6 @@ ___
 
 <br>
 
-___
 ### Retrieving shopping cart
 From the example form, and removing items
 ```php
