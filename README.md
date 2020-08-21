@@ -5,7 +5,7 @@ Create a complete shoppingcart system with a few lines of code, can be used on b
 #### 
 | Argument | Description |
 | --- | --- |
-|  1   Variable of the dictionary containing 'form element name' => 'desired variable name used later when retreiving shopping cart' |
+|  1  | Variable of the dictionary containing 'form element name' => 'desired variable name used later when retreiving shopping cart' |
 |  [  |  |
 | `username_key`  | What your $_SESSION['thisvalue'] is for your username system, if you have one. |
 | `save_dir`  | Folder to save the users shoppingcart |
