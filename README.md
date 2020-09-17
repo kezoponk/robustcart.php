@@ -23,7 +23,11 @@ Create a complete shoppingcart system with a few lines of code, can be used on b
 <?php include('robustcart.php') ?>
 <html>
 ...
-<form method="POST">
+<!-- Optional: Create an iframe and add target="votar" in the form -->
+<!-- to prevent page from refreshing each time the user adds an item to their cart -->
+<iframe name="votar" style="display:none;"></iframe>
+...
+<form method="POST" target="votar">
   <p value="1034" name="articlenumber"> 1034 </p>
   <h1 value="Nuke" name="label"> Nuke </h1>
   <img value="img/uranB12_nuke.jpg" src="img/uranB12_nuke.jpg" name="image">
