@@ -23,8 +23,8 @@ Create a complete shoppingcart system with a few lines of code, can be used on b
 <?php include('robustcart.php') ?>
 <html>
 ...
-<!-- Optional: Create an iframe and add target="votar" in the form -->
-<!-- to prevent page from refreshing each time the user adds an item to their cart -->
+<!-- Optional: Create an iframe and add target="votar" in the form
+     to prevent page from refreshing each time the user adds an item to their cart -->
 <iframe name="votar" style="display:none;"></iframe>
 ...
 <form method="POST" target="votar">
