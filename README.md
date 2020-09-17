@@ -1,4 +1,4 @@
-# Robustcart.php ![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
+# Robustcart.php
 
 Create a complete shoppingcart system with a few lines of code, can be used on both small and big scale sites<br>
 
