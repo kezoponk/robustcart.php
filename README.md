@@ -69,6 +69,7 @@ $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "
 **$_SESSION['user']** is the username variable, shoppingcart is saved in **"shoppingcarts"** folder as their **username**.json
 ___
 
+<br>
 
 ### Retrieving shopping cart
 From the example form, and removing items
