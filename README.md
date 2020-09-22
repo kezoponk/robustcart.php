@@ -45,7 +45,7 @@ $values = array(
 // NAME-OF-INPUT-IN-FORM => DESIRED-VARIABLE-NAME
 ```
 
-<br>
+___
 
 ###### Example 1
 ```php
@@ -54,8 +54,6 @@ $_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" 
 **$_SESSION['username']** is the username variable, shoppingcart is **stored in session and saved in "users" folder** as their **encrypted username**.json. Keep in mind that encryption **may** affect website performance on very big scale sites
 ___
 
-<br>
-
 ###### Example 2
 ```php
 $_SESSION['cart'] = new Cart($values, []);
@@ -63,7 +61,6 @@ $_SESSION['cart'] = new Cart($values, []);
 Shoppingcart is **not** saved in file, the customers cart is **stored only in session** which is the only option if you don't have accounts. **This is not the worse option**, but the customers shopping cart is cleared when session cookie run out
 ___
 
-<br>
 
 ###### Example 3
 ```php
@@ -72,7 +69,6 @@ $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "
 **$_SESSION['user']** is the username variable, shoppingcart is saved in **"shoppingcarts"** folder as their **username**.json
 ___
 
-<br>
 
 ### Retrieving shopping cart
 From the example form, and removing items
