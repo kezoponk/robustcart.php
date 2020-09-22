@@ -18,7 +18,7 @@ Create a complete shoppingcart system with a few lines of code, can be used on b
  </p>
 <br>
 
-### Examples:
+### Examples
 ```html
 <?php include('robustcart.php') ?>
 <html>
@@ -47,7 +47,7 @@ $values = array(
 
 <br>
 
-- Example 1
+###### Example 1
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" => "users", "encrypt" => TRUE]);
 ```
@@ -56,7 +56,7 @@ ___
 
 <br>
 
-- Example 2
+###### Example 2
 ```php
 $_SESSION['cart'] = new Cart($values, []);
 ```
@@ -65,7 +65,7 @@ ___
 
 <br>
 
-- Example 3
+###### Example 3
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "shoppingcarts", "encrypt" => FALSE);
 ```
