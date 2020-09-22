@@ -2,7 +2,6 @@
 
 Create a complete shoppingcart system with a few lines of code, can be used on both small and big scale sites<br>
 
-#### 
 | Argument | Description |
 | --- | --- |
 |  1  | Variable of the dictionary containing 'form element name' => 'desired variable name used later when retreiving shopping cart' |
