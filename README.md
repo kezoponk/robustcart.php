@@ -1,6 +1,6 @@
 # Robustcart.php
 
-Create a complete shoppingcart system with a few lines of code, can be used on both small and big scale sites<br>
+Create a complete shoppingcart system with a few lines of code, can be deployed on both small and big scale sites<br>
 
 | Argument | Description |
 | --- | --- |
