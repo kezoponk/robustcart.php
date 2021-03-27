@@ -70,7 +70,7 @@ $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "
 <br><br>
 
 ### Retreiving and removing items
-Can be done with a POST request containing a element with the name=rfc (Remove-from-cart) and value=cart_index of item to remove
+Can be done with a POST request containing a element with name=rfc (Remove-from-cart) and value=cart_index of item to remove
 ```php
 foreach($_SESSION["shopping_cart"] as $keys => $values)
 {
