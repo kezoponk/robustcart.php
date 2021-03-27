@@ -1,7 +1,8 @@
 # Robustcart.php
 
-Create a complete shoppingcart system, that can be deployed on both small and big scale sites, with a few lines of code<br>
+Create a complete shoppingcart system, that can be deployed on both small and big scale sites, with a few lines of code<br><br>
 
+### Usage
 | Argument | Description |
 | --- | --- |
 |  1  | Variable of the dictionary containing 'form element name' => 'desired variable name used later when retreiving shopping cart' |
@@ -17,7 +18,7 @@ Create a complete shoppingcart system, that can be deployed on both small and bi
  </p>
 <br>
 
-### Examples
+### Example
 ```html
 <?php include('robustcart.php') ?>
 <html>
@@ -46,14 +47,14 @@ $values = array(
 
 ___
 
-###### Example 1
+###### Configuration 1 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" => "users", "encrypt" => TRUE]);
 ```
 **$_SESSION['username']** is the username variable, shoppingcart is **stored in session and saved in "users" folder** as their **encrypted username**.json. Keep in mind that encryption **may** affect website performance on very big scale sites
 ___
 
-###### Example 2
+###### Configuration 2 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, []);
 ```
@@ -61,26 +62,24 @@ Shoppingcart is **not** saved in file, the customers cart is **stored only in se
 ___
 
 
-###### Example 3
+###### Configuration 3 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "shoppingcarts", "encrypt" => FALSE);
 ```
 **$_SESSION['user']** is the username variable, shoppingcart is saved in **"shoppingcarts"** folder as their **username**.json
-___
 
-<br>
+<br><br>
 
 ### Retrieving shopping cart
 From the example form, and removing items
 ```php
 foreach($_SESSION["shopping_cart"] as $keys => $values)
-  {
-    // Echo value of the description element in example form
-    echo $values['desc'];
- 
-    // Items can be removed only with post
-    echo '<form method="POST"> <button type="submit" name="rfc" value="'.$values['cart_index'].'"> Remove </button> </form>;
-    
-  }
+{
+  // Echo value of the description element in example form
+  echo $values['desc'];
+
+  // Items can be removed only with post
+  echo '<form method="POST"> <button type="submit" name="rfc" value="'.$values['cart_index'].'"> Remove </button> </form>;
+}
 ```
 Outputs "Nuke" and "Can be used as a toy or deadly weapon", with a remove link, and button
