@@ -16,7 +16,7 @@ Create a complete shoppingcart system, that can be deployed on both small and bi
     $_SESSION['cart'] = new Cart($nameToVariable, [Options for saving cart]);
   </code>
  </p>
-
+<br>
 
 ### Examples
 ```html
@@ -45,14 +45,14 @@ $values = array(
 // NAME-OF-INPUT-IN-FORM => DESIRED-VARIABLE-NAME
 ```
 
-###### Configuration example 1 / 3
+###### Configuration 1 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" => "users", "encrypt" => TRUE]);
 ```
 **$_SESSION['username']** is the username variable, shoppingcart is **stored in session and saved in "users" folder** as their **encrypted username**.json. Keep in mind that encryption **may** affect website performance on very big scale sites
 ___
 
-###### Configuration example 2 / 3
+###### Configuration 2 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, []);
 ```
@@ -60,13 +60,13 @@ Shoppingcart is **not** saved in file, the customers cart is **stored only in se
 ___
 
 
-###### Configuration example 3 / 3
+###### Configuration 3 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "shoppingcarts", "encrypt" => FALSE);
 ```
 **$_SESSION['user']** is the username variable, shoppingcart is saved in **"shoppingcarts"** folder as their **username**.json
 
-<br>
+<br><br>
 
 ### Retrieving shopping cart
 From the example form, and removing items
