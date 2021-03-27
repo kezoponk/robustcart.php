@@ -1,5 +1,4 @@
 # Robustcart.php
-
 Create a complete shoppingcart system, that can be deployed on both small and big scale sites, with a few lines of code<br><br>
 
 ### Usage
@@ -70,8 +69,8 @@ $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "
 
 <br><br>
 
-### Retrieving shopping cart
-From the example form, and removing items
+### Retreiving and removing items
+Can be done with a POST request containing a element with the name=rfc (Remove-from-cart) and value=cart_index of item to remove
 ```php
 foreach($_SESSION["shopping_cart"] as $keys => $values)
 {
@@ -82,4 +81,4 @@ foreach($_SESSION["shopping_cart"] as $keys => $values)
   echo '<form method="POST"> <button type="submit" name="rfc" value="'.$values['cart_index'].'"> Remove </button> </form>;
 }
 ```
-Outputs "Nuke" and "Can be used as a toy or deadly weapon", with a remove link, and button
+Outputs "Can be used as a toy or deadly weapon" with a remove button
