@@ -49,22 +49,24 @@ $values = array(
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" => "users", "encrypt" => TRUE]);
 ```
-**$_SESSION['username']** is the username variable, shoppingcart is **stored in session and saved in "users" folder** as their **encrypted username**.json. Keep in mind that encryption **may** affect website performance on very big scale sites
+- **$_SESSION['username']** is the username variable
+- Shoppingcart is **stored in session and saved in "users" folder** as their **encrypted username**.json
 ___
 
 ###### Configuration 2 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, []);
 ```
-Shoppingcart is **not** saved in file, the customers cart is **stored only in session** which is the only option if you don't have accounts. **This is not the worse option**, but the customers shopping cart is cleared when session cookie run out
+- Shoppingcart is **not** saved in file
+- The customers cart is **stored only in session** which is the only option if you don't have accounts.<br> **This is not the worse option**, but the customers shopping cart is cleared when session cookie run out
 ___
-
 
 ###### Configuration 3 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "shoppingcarts", "encrypt" => FALSE);
 ```
-**$_SESSION['user']** is the username variable, shoppingcart is saved in **"shoppingcarts"** folder as their **username**.json
+- **$_SESSION['user']** is the username variable
+- Shoppingcart is saved in **"shoppingcarts"** folder as their **username**.json
 
 <br><br>
 
