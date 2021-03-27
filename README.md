@@ -12,7 +12,7 @@ Create a complete shoppingcart system, that can be deployed on both small and bi
 |  ]  |  |
 <p align="center">
   <code>
-    $_SESSION['cart'] = new Cart($nameToVariable, [Options for saving cart]);
+    $_SESSION['cart'] = new Cart($nameToVariable, [<strong>Options for saving cart</strong>]);
   </code>
  </p>
 <br>
