@@ -14,7 +14,7 @@ Create a complete shoppingcart system, that can be deployed on both small and bi
   <code>
     $_SESSION['cart'] = new Cart($nameToVariable, [<strong>Options for saving cart</strong>]);
   </code><br>
-  Leave options empty if you don't want cart saved in a file
+  Leave options empty if you don't want cart saved in a file!
  </p>
 <br>
 
