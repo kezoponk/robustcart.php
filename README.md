@@ -4,7 +4,7 @@ Create a complete shoppingcart system, that can be deployed on both small and bi
 ### Usage
 | Argument | Description |
 | --- | --- |
-|  1  | Variable of the dictionary containing 'form element name' => 'desired variable name used later when retreiving shopping cart' |
+|  1  | Variable of the dictionary containing '**form element name**' => '**desired variable name/key used later when retreiving shopping cart**'<br>See examples bellow |
 |  [  |  |
 | `username_key`  | What your $_SESSION['thisvalue'] is for your username system, if you have one. |
 | `save_dir`  | Folder to save the users shoppingcart |
@@ -13,7 +13,8 @@ Create a complete shoppingcart system, that can be deployed on both small and bi
 <p align="center">
   <code>
     $_SESSION['cart'] = new Cart($nameToVariable, [<strong>Options for saving cart</strong>]);
-  </code>
+  </code><br>
+  Leave options empty if you don't want cart saved in a file
  </p>
 <br>
 
@@ -44,7 +45,7 @@ $values = array(
 // NAME-OF-INPUT-IN-FORM => DESIRED-VARIABLE-NAME
 ```
 
-###### Configuration 1 / 3
+###### Example 1 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" => "users", "encrypt" => TRUE]);
 ```
@@ -52,7 +53,7 @@ $_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" 
 - Shoppingcart is **stored in session and saved in "users" folder** as their **encrypted username**.json
 ___
 
-###### Configuration 2 / 3
+###### Example 2 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, []);
 ```
@@ -60,7 +61,7 @@ $_SESSION['cart'] = new Cart($values, []);
 - The customers cart is **stored only in session** which is the only option if you don't have accounts.<br> **This is not the worse option**, but the customers shopping cart is cleared when session cookie run out
 ___
 
-###### Configuration 3 / 3
+###### Example 3 / 3
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "shoppingcarts", "encrypt" => FALSE);
 ```
@@ -78,7 +79,7 @@ foreach($_SESSION["shopping_cart"] as $keys => $values)
   echo $values['desc'];
 
   // Items can be removed only with post
-  echo '<form method="POST"> <button type="submit" name="rfc" value="'.$values['cart_index'].'"> Remove </button> </form>;
+  echo '<form method="POST"> <button type="submit" name="rfc" value="'.$values['cart_index'].'"> Remove </button> </form>';
 }
 ```
 Outputs "Can be used as a toy or deadly weapon" with a remove button
