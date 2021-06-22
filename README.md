@@ -4,7 +4,7 @@ Create a complete shoppingcart system, that can be deployed on both small and bi
 ### Usage
 | Argument | Description |
 | --- | --- |
-|  1  | Variable of the dictionary containing '**form element name**' => '**desired variable name/key used later when retreiving shopping cart**'<br>See examples bellow |
+|  1  | Dictionary containing<br>'**form element name**' => '**desired variable name/key used later when retreiving value**'<br>See examples bellow |
 |  [  |  |
 | `username_key`  | What your $_SESSION['thisvalue'] is for your username system, if you have one. |
 | `save_dir`  | Folder to save the users shoppingcart |
@@ -42,31 +42,32 @@ $values = array(
   "image" => "img",
   "description" => "desc"
 );
-// NAME-OF-INPUT-IN-FORM => DESIRED-VARIABLE-NAME
 ```
 
-###### Example 1 / 3
+**Example 1 / 3**
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" => "users", "encrypt" => TRUE]);
 ```
-- **$_SESSION['username']** is the username variable
-- Shoppingcart is **stored in session and saved in "users" folder** as their **encrypted username**.json
-___
+- $_SESSION['username'] is the username variable
+- Shoppingcart is stored in session and saved in "users" folder as their encrypted username.json
 
-###### Example 2 / 3
+<br>
+
+**Example 2 / 3**
 ```php
 $_SESSION['cart'] = new Cart($values, []);
 ```
-- Shoppingcart is **not** saved in file
-- The customers cart is **stored only in session** which is the only option if you don't have accounts.<br> **This is not the worse option**, but the customers shopping cart is cleared when session cookie run out
-___
+- Shoppingcart is not saved in file
+- The customers cart is stored only in session which is the only option if you don't have accounts.<br> This is not the worse option, but the customers shopping cart is cleared when session cookie run out
 
-###### Example 3 / 3
+<br>
+
+**Example 3 / 3**
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "shoppingcarts", "encrypt" => FALSE);
 ```
-- **$_SESSION['user']** is the username variable
-- Shoppingcart is saved in **"shoppingcarts"** folder as their **username**.json
+- $_SESSION['user'] is the username variable
+- Shoppingcart is saved in "shoppingcarts" folder as their username.json
 
 <br><br>
 
