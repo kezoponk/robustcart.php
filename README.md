@@ -4,7 +4,7 @@ Create a complete shoppingcart system, that can be deployed on both small and bi
 ### Usage
 | Argument | Description |
 | --- | --- |
-|  1  | Dictionary containing<br>'**form element name**' => '**desired variable name/key used later when retreiving value**'<br>See examples bellow |
+|  1  | Dictionary array with structure:<br>"**form element name value**" => "**desired variable name/key used later when retreiving value**"<br>See examples bellow |
 |  [  |  |
 | `username_key`  | What your $_SESSION['thisvalue'] is for your username system, if you have one. |
 | `save_dir`  | Folder to save the users shoppingcart |
@@ -14,7 +14,7 @@ Create a complete shoppingcart system, that can be deployed on both small and bi
   <code>
     $_SESSION['cart'] = new Cart($nameToVariable, [<strong>Options for saving cart</strong>]);
   </code><br>
-  Leave options empty if you don't want cart saved in a file!
+  Simply leave options empty if you do not want cart saved in a file!
  </p>
 <br>
 
