@@ -1,10 +1,11 @@
 # Robustcart.php
-Create a complete shoppingcart system, that can be deployed on both small and big scale sites, with a few lines of code<br><br>
+Create a complete shoppingcart system with a few lines of code.<br><br>
+
 
 ### Usage
 | Argument | Description |
 | --- | --- |
-|  1  | Dictionary array with structure:<br>"**form element name value**" => "**desired variable name/key used later when retreiving value**"<br>See examples bellow |
+|  <p align="center">First</p>  | Dictionary array with structure:<br>"**form element name value**" => "**desired variable name/key used later when retreiving value**"<br>See examples bellow |
 |  [  |  |
 | `username_key`  | What your $_SESSION['thisvalue'] is for your username system, if you have one. |
 | `save_dir`  | Folder to save the users shoppingcart |
@@ -44,7 +45,7 @@ $values = array(
 );
 ```
 
-**Example 1 / 3**
+###### Example
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" => "users", "encrypt" => TRUE]);
 ```
@@ -53,7 +54,7 @@ $_SESSION['cart'] = new Cart($values, ["username_key" => "username", "save_dir" 
 
 <br>
 
-**Example 2 / 3**
+###### Example
 ```php
 $_SESSION['cart'] = new Cart($values, []);
 ```
@@ -62,7 +63,7 @@ $_SESSION['cart'] = new Cart($values, []);
 
 <br>
 
-**Example 3 / 3**
+###### Example
 ```php
 $_SESSION['cart'] = new Cart($values, ["username_key" => "user", "save_dir" => "shoppingcarts", "encrypt" => FALSE);
 ```
